@@ -1,15 +1,18 @@
 import streamlit as st
 from ocr_api import extract_text_ocr_space
-from med_api import get_medicine_suggestion
+from med_api import get_medicine_suggestion  
 from interaction_api import check_interactions
 from utils import translate_text
 
+# Set up Streamlit page
 st.set_page_config(page_title="MedEasy", page_icon="💊")
 st.title("💊 MedEasy - AI Pharmacist Assistant")
 
+# Load secrets from .streamlit/secrets.toml
 ocr_api_key = st.secrets["ocr_space_api_key"]
-openai_key = st.secrets["openai_api_key"]
+hf_api_key = st.secrets["hf_api_key"] 
 
+# File uploader for prescription
 uploaded_file = st.file_uploader("Upload your prescription image", type=["jpg", "jpeg", "png"])
 
 if uploaded_file:
@@ -20,7 +23,7 @@ if uploaded_file:
 
     if extracted_text:
         st.subheader("💊 Suggested Medicines")
-        suggestion = get_medicine_suggestion(extracted_text, openai_key)
+        suggestion = get_medicine_suggestion(extracted_text)
         st.write(suggestion)
 
         st.subheader("⚠️ Drug Interaction Check")
