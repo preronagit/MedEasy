@@ -1,6 +1,3 @@
-import requests
-import streamlit as st
-
 def get_medicine_suggestion(prescription_text):
     api_url = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
     headers = {
@@ -21,6 +18,10 @@ Output:"""
     }
 
     response = requests.post(api_url, headers=headers, json=payload)
+
+    # Debug logs
+    print("Status code:", response.status_code)
+    print("Raw response:", response.text)
 
     try:
         json_response = response.json()
