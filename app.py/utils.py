@@ -1,5 +1,4 @@
-from googletrans import Translator
+from deep_translator import GoogleTranslator
 
-def translate_text(text, lang_code):
-    translator = Translator()
-    return translator.translate(text, dest=lang_code).text
+def translate_text(text, target_lang):
+    return GoogleTranslator(source='auto', target=target_lang).translate(text)
