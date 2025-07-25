@@ -5,7 +5,7 @@ from interaction_api import check_interactions
 from utils import translate_text
 
 st.set_page_config(page_title="MedSakhi", page_icon="💊")
-st.title("💊 MedSakhi - AI Pharmacist Assistant")
+st.title("💊 MedEasy - AI Pharmacist Assistant")
 
 ocr_api_key = st.secrets["ocr_space_api_key"]
 openai_key = st.secrets["openai_api_key"]
